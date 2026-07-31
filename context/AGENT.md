@@ -22,6 +22,9 @@ React 18 + Vite + TypeScript + Tailwind CSS + GSAP + Framer Motion. No backend.
 - Remote: `origin main` → github.com/christpor/khmer-eat
 - Live: https://khmer-eating.vercel.app (Vercel auto-builds Vite, out dir `dist`)
 - Docs: README.md (badges, quick start), LICENSE = MIT
+- **Canonical spec:** `docs/recreate-prompt.md` must stay in sync with the code — whenever site
+  behavior changes, update the prompt so any AI can recreate the site (verified: Gemini 3.6 Flash
+  rebuilt it). Includes Responsive + Performance MANDATORY rules + Definition of Done.
 
 ## ⚠️ Known Pitfalls (from .learnings)
 - SVG icon-atlas edits (old v1 site): duplicate `<symbol id>` corruption — verify IDs after edits. Legacy concern, removed with v2 rebuild.
@@ -35,5 +38,9 @@ React 18 + Vite + TypeScript + Tailwind CSS + GSAP + Framer Motion. No backend.
 - Works/Journal: `mono`→`font-mono`; Works "View" pill gained `isolation:isolate` so the orange gradient ring actually shows
 - Recreate prompt (`docs/recreate-prompt.md`) updated to the responsive spec (Gemini 3.6 Flash reproduced the site from it — user-verified)
 - Deployed: preview → `vercel --prod` (`khmer-eating-oz0rmzwd6-...`) → re-pointed `khmer-eating.vercel.app` alias (verified 200s)
+
+**Accomplished (round 3 — prompt upgrade):**
+- `docs/recreate-prompt.md`: added MANDATORY Responsive Rules (mobile-first, h-svh, matchMedia ≥768px for heavy effects, hamburger below sm, touch targets, scale-down headings), MANDATORY Performance Rules (lazy images except hero, aspect boxes to kill CLS, no heavy deps, font preconnect, gsap.context cleanup, prefers-reduced-motion), and a 7-point Definition of Done checklist (build gates, 320–1440px widths, lightbox/nav/parallax behaviors, no-flash toggles)
+- `context/AGENT.md`: documented `docs/recreate-prompt.md` as the canonical in-sync spec
 
 **Next step:** only if user requests — dark-theme polish pass, checkout flow, or connect GitHub repo to Vercel for auto-deploys.

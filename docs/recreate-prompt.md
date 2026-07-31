@@ -10,6 +10,8 @@ Prompt to recreate this landing page:
 
 Build a single-page WHITE + ORANGE bilingual (EN/ខ្មែរ) restaurant landing page using
 React + Vite + Tailwind CSS + TypeScript + GSAP + Framer Motion.
+It MUST be fully responsive (zero horizontal scroll at 320px, mobile-first) and fast
+(~140KB gzipped, no layout shift). Follow the Responsive + Performance Rules below.
 
 ---
 
@@ -57,6 +59,32 @@ Khmer font switch via html[data-lang="kh"]. Theme key "khmer-eats-theme" (light 
 ### Images (local, in public/images/)
 hero.jpg (grilled skewers) + amok.jpg, loklak.jpg, nombanhchok.jpg, kuyteav.jpg,
 numpang.jpg, grill.jpg — 6 Khmer dish photos.
+
+### Responsive Rules (MANDATORY)
+- Mobile-first: every class is a mobile base, upscaled with sm:/md:/lg: prefixes. No desktop-first hacks.
+- Zero horizontal overflow at 320px: never use fixed widths wider than the viewport; grids that can't
+  fit collapse to fewer columns (grid-cols-1) or cards shrink via max-w (e.g. 150px→200px→320px).
+- Viewport-tall sections use h-svh (not h-screen) so mobile address bars don't cause jumps.
+- Heavy scroll effects (pinning, parallax, scrub) run ONLY inside gsap.matchMedia("(min-width: 768px)")
+  — phones get a plain scrolling layout. Respect prefers-reduced-motion (skip loader/marquee/parallax).
+- Navigation: below sm, collapse links into a hamburger dropdown (AnimatePresence) with the 3 links +
+  language + theme + "Order now". The pill stays logo + hamburger on phones; links/lang/theme/order
+  show inline from sm up. Close dropdown on tap, outside click, or link tap.
+- Touch: interactive targets ≥ 36–40px (w-9/h-9 minimum); never hover-only actions on phones.
+- Headings scale down at the smallest widths (text-5xl base, not text-6xl) so nothing clips.
+
+### Performance Rules (MANDATORY)
+- Images: all local in public/, compressed (total ≈1.6MB), loading="lazy" EXCEPT the hero which is
+  eager — and the hero has width/height set so LCP doesn't shift.
+- No layout shift: every image sits in a fixed aspect box (aspect-square / aspect-[4/3]) — never a
+  bare <img> that reflows the page.
+- No heavy deps: no hls.js, no react-router, no UI kit, no image CDN. Bundle stays ≈400KB raw /
+  ≈140KB gzip.
+- Fonts: Google Fonts with preconnect + crossorigin, display=swap, only the weights used. No font
+  files committed.
+- GSAP: one gsap.context() per component with ctx.revert() cleanup; ScrollTrigger through matchMedia;
+  kill marquee tweens on unmount. No long-running rAF loops after load.
+- Sections below the fold are simple; only the hero uses entrance animations that block first paint.
 
 ---
 
@@ -239,4 +267,16 @@ gsap, framer-motion, react, react-dom, vite, typescript, tailwindcss (NO hls.js,
 single page, no video).
 
 Add smooth scroll nav and IntersectionObserver active-link highlighting.
+
+---
+
+## Definition of Done (verify before shipping)
+1. `npm run build` → zero TypeScript errors.
+2. Test at 320px / 375px / 768px / 1440px: no horizontal scrollbar at any width.
+3. Mobile: hamburger opens the dropdown; tapping a link closes it; gallery taps open the lightbox;
+   lightbox closes on backdrop tap + Escape; body scroll locks while it's open.
+4. Desktop: parallax scrubs with scroll and nothing overlaps the section below.
+5. Lazy images load as you scroll; the hero paints immediately (no LCP shift).
+6. Khmer (ខ្មែរ) toggle + dark mode work from a cold load with no flash.
+7. Mobile: hero doesn't jump when the address bar hides; no content clipped by the top pill.
 ```

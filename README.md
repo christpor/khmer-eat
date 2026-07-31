@@ -7,6 +7,9 @@
 </p>
 
 <p align="center">
+  <a href="https://khmer-eating.vercel.app">
+    <img alt="Live demo" src="https://img.shields.io/badge/live_demo-khmer--eating.vercel.app-059669.svg" />
+  </a>
   <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-green.svg" />
   <img alt="No dependencies" src="https://img.shields.io/badge/dependencies-0-059669.svg" />
   <img alt="Language" src="https://img.shields.io/badge/stack-HTML%20%2F%20CSS%20%2F%20JS-F97316.svg" />
@@ -30,6 +33,12 @@ python3 -m http.server 8080
 ```
 
 Then open **http://localhost:8080** in your browser. That's it.
+
+## 🌐 Live demo
+
+See it live on Vercel: **https://khmer-eating.vercel.app**
+
+> Deploy your own: `vercel --prod` from the project root.
 
 > Why a local server and not a double-click? Some browsers block `file://` features (fonts, fetch). The Python server is built-in — nothing to install.
 

@@ -1,36 +1,42 @@
 # Agent Brain — Khmer Eats Demo
 
 ## Project
-Single-page bilingual landing page for a Khmer street-food delivery app demo.
-Pure HTML/CSS/JS. No framework, no build step, no dependencies.
+Bilingual (EN/ខ្មែរ) landing page for a Khmer street-food delivery app demo.
+React 18 + Vite + TypeScript + Tailwind CSS + GSAP + Framer Motion. No backend.
 
 ## Stack
-- `index.html` — structure, bilingual `data-en`/`data-kh` attrs, Lucide-style inline SVG icon atlas
-- `style.css` — light/dark theme system (`html[data-theme]`), Khmer font switch (`html[data-lang="kh"]` → Kantumruy Pro)
-- `script.js` — theme/lang toggles (localStorage, no-flash), cart counter, live tracking rider animation
+- `src/App.tsx` — lang/theme state (localStorage), mounts all sections
+- `src/i18n.ts` — EN/KH copy dictionary, DISHES (6 dishes), STORIES (4 stories)
+- `src/index.css` — Tailwind + design tokens (orange `#EA580C` → `#FB923C` gradient), keyframes
+- `src/components/` — LoadingScreen (rAF counter), Navbar (pill, hover gradient border), Hero (GSAP timeline, rotating role word), Works (bento 4 cards), Journal (4 pills), Explorations (ScrollTrigger pin + parallax), Stats (3), Footer (GSAP marquee + flipped image)
+- `public/images/` — hero + 6 dish photos (local, ~1.6MB total)
 
 ## Design System
-- Fonts: Fraunces + DM Sans (EN) · Kantumruy Pro + Noto Sans Khmer (KH) · JetBrains Mono (numbers)
-- Accent orange `#EA580C` (light) / `#FF6B2C` (dark); light default, warm white `#FAFAF8`; dark = OLED black
-- Motion: entrances `scale(0.97)`, snappy `cubic-bezier(0.19,1,0.22,1)`, buttons `scale(0.96)` on active
-- Run: `python3 -m http.server 8080` from project root
+- Fonts: Inter + Instrument Serif (EN) · Kantumruy Pro + Noto Sans Khmer (KH)
+- Light default: warm white `hsl(30 20% 98%)` + orange accent; dark via `html[data-theme="dark"]`
+- Theme/lang keys: `khmer-eats-theme`, `khmer-eats-lang` (no-flash inline script in index.html head)
+- Motion: `power3.out` GSAP entrances, `[0.25,0.1,0.25,1]` framer reveals, `.accent-gradient` on hovers
+- Run: `npm install && npm run dev` → :5173 · build: `npm run build` → `dist/`
 
 ## Repository
 - Remote: `origin main` → github.com/christpor/khmer-eat
-- Docs: README.md (hero + architecture SVGs in `assets/`), LICENSE = MIT
+- Live: https://khmer-eating.vercel.app (Vercel auto-builds Vite, out dir `dist`)
+- Docs: README.md (badges, quick start), LICENSE = MIT
 
-## ⚠️ Known Pitfall (from .learnings)
-- Editing the SVG icon atlas: a bad multi-line edit can duplicate a `<symbol id>` and orphan one that's still referenced. Always re-verify icon IDs after edits.
+## ⚠️ Known Pitfalls (from .learnings)
+- SVG icon-atlas edits (old v1 site): duplicate `<symbol id>` corruption — verify IDs after edits. Legacy concern, removed with v2 rebuild.
+- Always point the `khmer-eating.vercel.app` alias at the newest production deployment — stale aliases serve the old build.
 
 ## LAST SESSION STATE (2026-07-31)
 **Accomplished:**
-- v1: dark landing page (hero, menu grid, live tracking mock, cart)
-- v2: EN/KH bilingual toggle, Kantumruy Pro Khmer font, light-mode default + dark toggle, Lucide icon set, trust badge
-- README + MIT license + hero/architecture SVGs; all pushed to `origin main`
-- Context files: CLAUDE.md router, AGENT.md brain, .learnings/errors/ initialized
+- Full rebuild: pure HTML/CSS/JS → React 18 + Vite + TS + Tailwind + GSAP + Framer Motion
+- Adapted the "Michael Smith" dark portfolio prompt to Khmer Eats: white/orange theme, local food photos, bilingual EN/KH, dropped hls.js + react-router-dom (no video, single page)
+- 8 sections: LoadingScreen (rAF counter), Hero (food photo + rotating role), Works bento (4 dishes), Journal pills, Explorations (GSAP pin + parallax), Stats, Footer (marquee)
+- Vercel: preview verified (all 200s) → promoted to prod → re-pointed `khmer-eating.vercel.app` alias to new deployment; old alias was serving stale build
+- Deleted old `style.css`/`script.js`/`assets/` SVGs; updated README, CLAUDE.md, .gitignore (node_modules, dist)
 
-**Ponytail delta:** net +6 files (3 site files + README/LICENSE/2 SVG + 3 context files). All justified — no dead code, no unused deps (zero deps).
+**Ponytail delta:** justified — stack swap requires the Vite project structure; dropped 2 deps from prompt (hls.js, react-router-dom).
 
-**Blockers:** none. Demo complete and live at `localhost:8080`.
+**Blockers:** none. Live and green at khmer-eating.vercel.app.
 
-**Next step:** only if user requests — checkout mock, more dishes, or deploy to GitHub Pages/Vercel for a live URL.
+**Next step:** only if user requests — dark-theme polish pass, checkout flow, or connect GitHub repo to Vercel for auto-deploys.

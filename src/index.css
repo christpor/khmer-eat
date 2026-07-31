@@ -1,0 +1,119 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: 30 20% 98%;
+    --surface: 0 0% 100%;
+    --text: 24 10% 10%;
+    --muted: 25 6% 42%;
+    --stroke: 30 12% 88%;
+  }
+
+  html[data-theme="dark"] {
+    --bg: 24 10% 4%;
+    --surface: 24 8% 8%;
+    --text: 30 20% 96%;
+    --muted: 25 6% 55%;
+    --stroke: 24 8% 14%;
+  }
+
+  body {
+    @apply bg-bg text-text-primary font-body antialiased;
+    font-family: "Inter", "Kantumruy Pro", "Noto Sans Khmer", sans-serif;
+  }
+
+  html[data-lang="kh"] body {
+    font-family: "Kantumruy Pro", "Noto Sans Khmer", sans-serif;
+  }
+}
+
+@layer utilities {
+  .accent-gradient {
+    background: linear-gradient(90deg, #ea580c 0%, #fb923c 100%);
+  }
+
+  .accent-gradient-text {
+    background: linear-gradient(90deg, #ea580c 0%, #fb923c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .font-display {
+    font-family: "Instrument Serif", "Fraunces", serif;
+  }
+
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+  }
+
+  .halftone {
+    background-image: radial-gradient(circle, #000 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+
+  .animate-scroll-down {
+    animation: scroll-down 1.5s ease-in-out infinite;
+  }
+
+  .animate-role-fade-in {
+    animation: role-fade-in 0.4s ease-out;
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+
+  .blur-in {
+    filter: blur(0);
+  }
+}
+
+@keyframes scroll-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+@keyframes role-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+::selection {
+  background: #ea580c;
+  color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-display-italic {
+  font-family: "Instrument Serif", "Fraunces", serif;
+  font-style: italic;
+}

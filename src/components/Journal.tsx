@@ -69,7 +69,7 @@ export default function Journal({ lang }: { lang: Lang }) {
               </div>
               <div className="hidden sm:flex flex-col items-end gap-1 shrink-0">
                 <span className="text-xs text-muted">{s.date}</span>
-                <span className="text-xs mono text-muted">
+                <span className="text-xs font-mono text-muted">
                   {s.time} {t(lang, COPY.journal.min.en, COPY.journal.min.kh)}
                 </span>
               </div>

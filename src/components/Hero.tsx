@@ -38,7 +38,7 @@ export default function Hero({ lang }: { lang: Lang }) {
   const [beforeRole, afterRole] = roleText.split(roles[roleIdx]);
 
   return (
-    <section ref={root} id="top" className="relative h-screen w-full overflow-hidden bg-bg">
+    <section ref={root} id="top" className="relative h-svh w-full overflow-hidden bg-bg">
       <div className="absolute inset-0">
         <img
           src="/images/hero.jpg"
@@ -54,7 +54,7 @@ export default function Hero({ lang }: { lang: Lang }) {
           {t(lang, COPY.hero.eyebrow.en, COPY.hero.eyebrow.kh)}
         </p>
 
-        <h1 className="name-reveal text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-white mb-6 opacity-0">
+        <h1 className="name-reveal text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-white mb-6 opacity-0">
           {t(lang, COPY.hero.name.en, COPY.hero.name.kh)}
         </h1>
 

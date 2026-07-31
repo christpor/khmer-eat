@@ -85,33 +85,38 @@ Full-screen overlay (fixed inset-0 z-[9999] bg-bg). requestAnimationFrame counte
 
 ## Section 2: Hero
 
-Full-viewport section, centered content over a food photo (NO video).
+Full-viewport section (h-svh — uses Tailwind's svh so mobile address bars don't jump), centered
+content over a food photo (NO video).
 
 ### Background
 - <img src="/images/hero.jpg"> absolutely positioned, min-w-full min-h-full object-cover
   -translate-x-1/2 -translate-y-1/2.
 - Overlay bg-black/20. Bottom fade: h-48 bg-gradient-to-t from-bg to-transparent.
 
-### Navbar (fixed, floats top center)
+### Navbar (fixed, floats top center) — fully responsive
 fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 md:pt-6 px-4.
-Inner pill: inline-flex rounded-full backdrop-blur-md border border-stroke bg-surface px-2 py-2,
+Inner pill: relative inline-flex rounded-full backdrop-blur-md border border-stroke bg-surface px-2 py-2,
 shadow-md shadow-black/10 when scrollY > 100.
 
 1. Logo: 9×9 circle, accent-gradient border ring (multi-stop, reverses on hover), inner bg-white
    circle, "KE" font-display italic text-[13px].
-2. Divider: w-px h-5 bg-stroke mx-1 (hidden on mobile).
+2. Divider: w-px h-5 bg-stroke mx-1 (hidden below sm).
 3. Nav links: ["Home", "Dishes", "Stories"] (Khmer: ទំព័រដើម / ម្ហូប / រឿងរ៉ាវ) — text-xs rounded-full
    px-3 px-4 py-1.5. Active: text-text-primary bg-stroke/50. Inactive: text-muted hover states.
-4. Divider.
-5. Language toggle button (EN ⇄ ខ្មែរ) + theme toggle (🌙/☀️).
-6. "Order now" button (Khmer: បញ្ជាទិញឥឡូវ): on hover shows animated accent-gradient border
-   behind (absolute span inset:-2px), inner content bg-surface rounded-full backdrop-blur-md, ↗ arrow.
+   **hidden below sm**.
+4. Hamburger button (sm:hidden): 2-line icon (rotates to ✕ when open) toggling a dropdown panel
+   (absolute top-full mt-2 left-1/2 -translate-x-1/2 w-56 rounded-3xl border bg-surface shadow-lg)
+   with the 3 links + language toggle + theme toggle + "Order now" (Khmer: បញ្ជាទិញឥឡូវ).
+   Closes on tap, on outside click, and animates via AnimatePresence.
+5. Language toggle button (EN ⇄ ខ្មែរ) + theme toggle (🌙/☀️) — hidden below sm (lives in the dropdown).
+6. "Order now" button (Khmer: បញ្ជាទិញឥឡូវ) — hidden below sm: on hover shows animated accent-gradient
+   border behind (absolute span inset:-2px), inner content bg-surface rounded-full backdrop-blur-md, ↗ arrow.
 
 ### Hero Content (centered, z-10)
 - Eyebrow: text-xs text-white uppercase tracking-[0.3em] mb-8 — "PHNOM PENH · SIEM REAP · BATTAMBANG".
   Class blur-in.
-- Name: text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-white
-  mb-6 — "Khmer Eats" (Khmer: ខ្មែរអ៊ីត). Class name-reveal.
+- Name: text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight
+  text-white mb-6 — "Khmer Eats" (Khmer: ខ្មែរអ៊ីត). Class name-reveal.
 - Role line: "A {role} lives in Phnom Penh." — roles cycle every 2s, Khmer:
   ["ម្ហូបតាមផ្លូវ","ក្តៅ","ស្រស់","លឿន"], EN: ["street food","hot","fresh","fast"]. Role word:
   font-display italic text-white, AnimatePresence mode="wait", key={roleIndex}.
@@ -151,7 +156,7 @@ Each card: bg-surface border border-stroke rounded-3xl overflow-hidden aspect-[4
 - .halftone overlay opacity-20 mix-blend-multiply
 - Hover: bg-bg/70 opacity-0→1 backdrop-blur-lg
 - Hover label: pill, white bg, animated accent-gradient border, "View — *DishName*" italic
-- Bottom-left: text-xs white mono "$price · XX min"
+- Bottom-left: text-xs white font-mono "$price · XX min"
 
 ---
 
@@ -163,7 +168,7 @@ bg-bg py-16 md:py-24. Same header pattern (eyebrow "The story" + heading + subte
 bg-surface/30 hover:bg-surface border border-stroke:
 - 20×20 rounded-full overflow-hidden image
 - Title (font-display, truncate, bilingual)
-- Right: date + "X min read" mono
+- Right: date + "X min read" font-mono
 - → arrow on hover
 
 Stories: "The 4am noodle run with Vibol", "Bopha's 20-year green curry",
@@ -173,19 +178,31 @@ Stories: "The 4am noodle run with Vibol", "Bopha's 20-year green curry",
 
 ## Section 5: Explorations (Parallax Gallery)
 
-min-h-[300vh] for scroll-driven parallax.
+**Responsive rule:** the parallax + sticky pin run ONLY at ≥768px (gsap.matchMedia "(min-width: 768px)").
+Below that, the gallery is a plain scrolling grid — smooth on phones, no pinning.
 
-### Layer 1: Pinned Center (z-10)
-h-screen pinned with GSAP ScrollTrigger.create({ trigger, start "top top", end "+=2000",
-scrub true, pin true, pinSpacing false }).
+Wrapper: relative md:min-h-[300vh] (the tall scroll room for the desktop effect only).
+
+### Layer 1: Sticky Center (z-10)
+h-svh flex items-center justify-center relative bg-bg md:sticky md:top-0 (CSS sticky replaces GSAP
+pin — no pinSpacer issues).
 - Eyebrow "Gallery", Heading "Visual *playground*" (accent-gradient-text italic), subtext,
   "See more on the street" button with gradient hover ring.
 
-### Layer 2: Parallax Columns (z-20, absolute, pointer-events-none)
-max-w-[1400px] grid grid-cols-2 gap-12 md:gap-40.
-6 dish images split into 2 columns, GSAP timeline yPercent 12→-12 stagger 0.2.
-Cards: aspect-square max-w-[320px] rounded-2xl, rotate ±3deg alternating, label pill
-(bg-black/50 white text, dish name), click → lightbox.
+### Layer 2: Parallax Columns (z-20)
+relative bg-bg md:absolute md:inset-0 md:pointer-events-none.
+max-w-[1400px] mx-auto grid grid-cols-2 gap-4 md:gap-12 lg:gap-40 px-4 py-12 md:px-8 md:py-24.
+6 dish images split into 2 columns (each .parallax-col flex flex-col gap-4 md:gap-12, right column
+md:mt-40, pointer-events-auto on md+). GSAP scrub timeline yPercent 12→-12 stagger 0.2.
+Cards: aspect-square w-full max-w-[150px] sm:max-w-[200px] md:max-w-[320px] rounded-2xl mx-auto,
+rotate ±3deg alternating, label pill (bg-black/50 white text, dish name), click → lightbox.
+
+### Lightbox (click any gallery card)
+Fullscreen fixed inset-0 z-[9998] bg-black/90, AnimatePresence. Scroll locked
+(document.body.style.overflow = "hidden") while open; closes on backdrop tap or Escape key.
+Inner card: max-w-4xl max-h-[90vh] overflow-y-auto rounded-3xl bg-bg — image (h-[45vh] md:h-[60vh]
+object-cover) with a ✕ close button, then dish area label (uppercase eyebrow), name (font-display
+italic, bilingual), description, and price + "X min" pills (font-mono, border-stroke).
 
 ---
 

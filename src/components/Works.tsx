@@ -68,7 +68,10 @@ export default function Works({ lang }: { lang: Lang }) {
               />
               <div className="absolute inset-0 bg-bg/70 opacity-0 group-hover:opacity-100 backdrop-blur-lg transition-opacity duration-300" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="inline-flex items-center gap-2 rounded-full bg-white text-text-primary px-5 py-2.5 text-sm relative">
+                <span
+                  className="inline-flex items-center gap-2 rounded-full bg-white text-text-primary px-5 py-2.5 text-sm relative"
+                  style={{ isolation: "isolate" }}
+                >
                   <span
                     aria-hidden
                     className="absolute rounded-full accent-gradient animate-gradient-shift"
@@ -78,7 +81,7 @@ export default function Works({ lang }: { lang: Lang }) {
                   <em className="font-display italic">{lang === "en" ? dish.name : dish.nameKh}</em>
                 </span>
               </div>
-              <div className="absolute bottom-4 left-4 text-white text-xs mono">
+              <div className="absolute bottom-4 left-4 text-white text-xs font-mono">
                 {dish.price} · {dish.eta} min
               </div>
             </motion.a>

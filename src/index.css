@@ -27,6 +27,12 @@
   html[data-lang="kh"] body {
     font-family: "Kantumruy Pro", "Noto Sans Khmer", sans-serif;
   }
+
+  html[data-lang="kh"] .font-display,
+  html[data-lang="kh"] .font-display-italic {
+    font-family: "Kantumruy Pro", "Noto Sans Khmer", sans-serif;
+    font-style: normal;
+  }
 }
 
 @layer utilities {

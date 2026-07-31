@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khmer Eats — Street Food, Delivered Hot</title>
+  <meta name="description" content="Khmer street food delivered to your door in under 30 minutes. Phnom Penh, Siem Reap, Battambang." />
+
+  <script>
+    /* No-flash: apply saved theme + language before first paint */
+    (function () {
+      try {
+        var t = localStorage.getItem("khmer-eats-theme") || "light";
+        var l = localStorage.getItem("khmer-eats-lang") || "en";
+        document.documentElement.setAttribute("data-theme", t);
+        document.documentElement.setAttribute("data-lang", l);
+        document.documentElement.lang = l;
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,900&family=JetBrains+Mono:wght@400;500&family=Kantumruy+Pro:wght@400;500;700&family=Noto+Sans+Khmer:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Icon atlas (Lucide-style, inline SVG) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-flame" viewBox="0 0 24 24">
+      <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor" />
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path d="m9 18 6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <path d="M5 12h14M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24">
+      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M3 6h18M16 10a4 4 0 0 1-8 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-bike" viewBox="0 0 24 24">
+      <circle cx="5.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <circle cx="18.5" cy="17.5" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm-3 11.5V14l-3-3 2-2-3-2 2-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M14 14l4.5 4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" stroke-width="2"/>
+    </symbol>
+    <symbol id="i-hat" viewBox="0 0 24 24">
+      <path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M6 17h12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-utensils" viewBox="0 0 24 24">
+      <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24">
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="m9 12 2 2 4-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24">
+      <path d="m5 8 6 6M4 14l6-6 2-3M2 5h12M7 2h1M22 22l-5-10-5 10M14 18h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <!-- ============ NAV ============ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="logo">
+        <svg class="icon logo-mark"><use href="#i-flame" /></svg>
+        Khmer<span class="logo-accent">Eats</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#menu" data-en="Menu" data-kh="ម៉ឺនុយ">Menu</a></li>
+        <li><a href="#how" data-en="How it works" data-kh="វិធីបញ្ជាទិញ">How it works</a></li>
+        <li><a href="#track" data-en="Live tracking" data-kh="តាមដានផ្ទាល់">Live tracking</a></li>
+        <li><a href="#cities" data-en="Cities" data-kh="ទីក្រុង">Cities</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="langBtn" aria-label="Switch language" title="Switch language">
+          <svg class="icon"><use href="#i-lang" /></svg>
+          <span class="lang-label" id="langLabel">ខ្មែរ</span>
+        </button>
+        <button class="icon-btn" id="themeBtn" aria-label="Switch theme" title="Switch theme">
+          <svg class="icon icon-sun"><use href="#i-sun" /></svg>
+          <svg class="icon icon-moon"><use href="#i-moon" /></svg>
+        </button>
+        <button class="cart-btn" id="cartBtn" aria-label="Cart">
+          <svg class="icon"><use href="#i-bag" /></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <a href="#menu" class="btn btn-primary btn-tactile" data-en="Order now" data-kh="បញ្ជាទិញឥឡូវ">
+          Order now
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="hero-grid">
+      <div class="hero-copy" data-animate>
+        <p class="eyebrow">Phnom Penh · Siem Reap · Battambang</p>
+        <h1 class="hero-title">
+          <span class="hero-line" data-en="Street food." data-kh="ម្ហូបតាមផ្លូវ។">Street food.</span>
+          <em class="hero-line" data-en="Delivered hot." data-kh="ក្តៅដល់ដៃអ្នក">Delivered hot.</em>
+        </h1>
+        <p class="hero-sub" data-en="Real Khmer hawkers. Cooked to order, packed hot, and at your door in under 30 minutes. No cold noodles. No excuses." data-kh="អ្នកលក់អាហារខ្មែរពិតៗ។ ធ្វើតាមការបញ្ជាទិញ វេចក្តៅៗ និងដល់ដៃអ្នកក្នុងរយៈពេលក្រោម ៣០ នាទី។ គ្មានមីត្រជាក់។ គ្មានលេស។">
+          Real Khmer hawkers. Cooked to order, packed hot, and at your door in under 30 minutes. No cold noodles. No excuses.
+        </p>
+        <div class="hero-cta">
+          <a href="#menu" class="btn btn-primary btn-lg btn-tactile" data-en="Order now" data-kh="បញ្ជាទិញឥឡូវ">
+            Order now <svg class="icon"><use href="#i-chevron" /></svg>
+          </a>
+          <a href="#how" class="btn btn-ghost btn-lg btn-tactile" data-en="How it works" data-kh="របៀបបញ្ជាទិញ">
+            How it works
+          </a>
+        </div>
+        <div class="hero-meta">
+          <div class="rating">
+            <span class="stars">
+              <svg class="icon"><use href="#i-star" /></svg><svg class="icon"><use href="#i-star" /></svg><svg class="icon"><use href="#i-star" /></svg><svg class="icon"><use href="#i-star" /></svg><svg class="icon"><use href="#i-star" /></svg>
+            </span>
+            <span class="rating-text" data-en="4.9 from 2,400+ hawkers" data-kh="៤.៩ ពីអ្នកលក់ជាង ២,៤០០ នាក់">4.9 from 2,400+ hawkers</span>
+          </div>
+          <div class="eta-badge">
+            <span class="eta-dot"></span>
+            <span data-en="avg. delivery" data-kh="មធ្យមភាគនៃការប្រគល់">avg. delivery</span>
+            <strong class="mono" id="heroEtaLabel">24 min</strong>
+          </div>
+          <div class="eta-badge trust-badge">
+            <svg class="icon"><use href="#i-shield" /></svg>
+            <span data-en="Pay cash or KHQR" data-kh="បង់សាច់ប្រាក់ ឬ KHQR">Pay cash or KHQR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual" data-animate>
+        <div class="hero-frame">
+          <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=70" alt="Grilled Khmer skewers over open flame" loading="eager" />
+          <div class="hero-tag mono">OPEN · 10:00 — 23:00</div>
+          <div class="hero-card">
+            <div class="hero-card-top">
+              <span class="mono">#KA-0042</span>
+              <span class="hero-card-status"><span class="eta-dot"></span> <span data-en="On the way" data-kh="កំពុងដឹក">On the way</span></span>
+            </div>
+            <div class="hero-card-main">
+              <span class="hero-card-label" data-en="Arriving in" data-kh="មកដល់ក្នុង">Arriving in</span>
+              <strong class="hero-card-eta mono" id="heroEta">24:00</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ STATS STRIP ============ -->
+  <section class="strip" id="cities" data-animate>
+    <div class="strip-inner">
+      <div class="strip-item">
+        <svg class="icon strip-icon"><use href="#i-hat" /></svg>
+        <strong class="mono">2,400+</strong>
+        <span data-en="hawkers on board" data-kh="អ្នកលក់ក្នុងកម្មវិធី">hawkers on board</span>
+      </div>
+      <div class="strip-item">
+        <svg class="icon strip-icon"><use href="#i-clock" /></svg>
+        <strong class="mono">30 min</strong>
+        <span data-en="avg. delivery" data-kh="ការប្រគល់មធ្យម">avg. delivery</span>
+      </div>
+      <div class="strip-item">
+        <svg class="icon strip-icon"><use href="#i-pin" /></svg>
+        <strong class="mono">21</strong>
+        <span data-en="cities &amp; towns" data-kh="ទីក្រុង និងស្រុក">cities &amp; towns</span>
+      </div>
+      <div class="strip-item">
+        <svg class="icon strip-icon"><use href="#i-utensils" /></svg>
+        <strong class="mono">0</strong>
+        <span data-en="cold noodles. ever." data-kh="មីត្រជាក់។ មិនដែលទេ។">cold noodles. ever.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MENU ============ -->
+  <section class="section" id="menu">
+    <div class="section-head" data-animate>
+      <p class="eyebrow" data-en="The menu" data-kh="ម៉ឺនុយ">The menu</p>
+      <h2 class="section-title" data-en="Today's hawkers" data-kh="អ្នកលក់ថ្ងៃនេះ">Today's hawkers</h2>
+      <p class="section-sub" data-en="Tap + to add. Your cart stays in the nav." data-kh="ចុច + ដើម្បីបន្ថែម។ កន្ត្រករបស់អ្នកនៅរបារខាងលើ។">Tap + to add. Your cart stays in the nav.</p>
+    </div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section section-dark" id="how">
+    <div class="section-head" data-animate>
+      <p class="eyebrow" data-en="How it works" data-kh="វិធីបញ្ជាទិញ">How it works</p>
+      <h2 class="section-title" data-en="From flame to doorstep" data-kh="ពីភ្លើងធ្យូង ដល់មាត់ទ្វារ">From flame to doorstep</h2>
+    </div>
+    <div class="steps" data-animate>
+      <div class="step">
+        <div class="step-top"><span class="step-icon"><svg class="icon"><use href="#i-phone" /></svg></span><span class="step-num mono">01</span></div>
+        <h3 data-en="Order" data-kh="បញ្ជាទិញ">Order</h3>
+        <p data-en="Pick your hawker and dishes. Pay on delivery — cash or KHQR." data-kh="ជ្រើសរើសអ្នកលក់ និងម្ហូប។ បង់ប្រាក់ពេលទទួល — សាច់ប្រាក់ ឬ KHQR។">Pick your hawker and dishes. Pay on delivery — cash or KHQR.</p>
+      </div>
+      <div class="step">
+        <div class="step-top"><span class="step-icon"><svg class="icon"><use href="#i-flame" /></svg></span><span class="step-num mono">02</span></div>
+        <h3 data-en="They cook" data-kh="ធ្វើម្ហូប">They cook</h3>
+        <p data-en="The hawker fires it up the moment your order lands. Nothing sits." data-kh="អ្នកលក់ធ្វើម្ហូបភ្លាមៗ ពេលអ្នកបញ្ជាទិញ។ ម្ហូបមិនដែលនៅចាំយូរទេ។">The hawker fires it up the moment your order lands. Nothing sits.</p>
+      </div>
+      <div class="step">
+        <div class="step-top"><span class="step-icon"><svg class="icon"><use href="#i-bike" /></svg></span><span class="step-num mono">03</span></div>
+        <h3 data-en="Delivered" data-kh="ប្រគល់ដល់ផ្ទះ">Delivered</h3>
+        <p data-en="Our riders grab it hot and bring it to you. Watch it live, below." data-kh="អ្នកដឹកជញ្ជូនយកម្ហូបក្តៅៗមកជូនអ្នក។ មើលផ្ទាល់ខាងក្រោម។">Our riders grab it hot and bring it to you. Watch it live, below.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE TRACKING ============ -->
+  <section class="section" id="track">
+    <div class="track-grid">
+      <div class="section-head track-head" data-animate>
+        <p class="eyebrow" data-en="Live tracking" data-kh="តាមដានផ្ទាល់">Live tracking</p>
+        <h2 class="section-title" data-en="Watch it come to you" data-kh="មើលម្ហូបមកដល់ដៃ">Watch it come to you</h2>
+        <p class="section-sub" data-en="Real-time rider position, straight from the demo app. The countdown is live." data-kh="ទីតាំងអ្នកដឹកជញ្ជូនផ្ទាល់ ពីកម្មវិធីសាកល្បង។ រាប់ថយក្រោយផ្ទាល់។">Real-time rider position, straight from the demo app. The countdown is live.</p>
+      </div>
+
+      <div class="track-panel" data-animate>
+        <div class="track-panel-head">
+          <div>
+            <p class="track-order mono">ORDER #KA-0042</p>
+            <p class="track-dish" data-en="Fish Amok + Num Pang, from Sokun's stall" data-kh="អាម៉ុក + នំប៉័ង ពីតូបសុខន">Fish Amok + Num Pang, from Sokun's stall</p>
+          </div>
+          <span class="badge-live"><span class="eta-dot"></span> LIVE</span>
+        </div>
+        <div class="track-map">
+          <svg viewBox="0 0 400 160" preserveAspectRatio="none" class="track-svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#EA580C"/>
+                <stop offset="100%" stop-color="#FB923C"/>
+              </linearGradient>
+            </defs>
+            <path class="track-route" d="M12,130 C70,130 90,40 150,40 C210,40 230,118 288,118 C320,118 340,70 388,60" fill="none" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7" />
+            <path class="track-progress" d="M12,130 C70,130 90,40 150,40 C210,40 230,118 288,118 C320,118 340,70 388,60" fill="none" stroke="url(#routeGrad)" stroke-width="3" stroke-linecap="round" stroke-dasharray="3 7" />
+            <circle class="track-start" cx="12" cy="130" r="4" fill="var(--card)" stroke="var(--line-hover)" stroke-width="1.5" />
+            <circle class="track-end" cx="388" cy="60" r="4" fill="#EA580C" />
+            <g id="riderDot">
+              <circle class="track-pulse" r="10" fill="none" stroke="#EA580C" stroke-width="2" />
+              <circle r="5" fill="#EA580C" />
+            </g>
+          </svg>
+          <div class="map-pins">
+            <div class="pin pin-a mono" data-en="HAWKER" data-kh="អ្នកលក់">HAWKER</div>
+            <div class="pin pin-b mono" data-en="YOU" data-kh="អ្នក">YOU</div>
+          </div>
+        </div>
+        <div class="track-panel-foot">
+          <div class="eta-big">
+            <span class="mono" id="trackEta">18:42</span>
+            <span class="eta-label" data-en="remaining" data-kh="នៅសល់">remaining</span>
+          </div>
+          <div class="track-steps">
+            <div class="tstep tstep-done"><span class="tstep-dot"></span><span data-en="Picked up" data-kh="យករួច">Picked up</span></div>
+            <div class="tstep"><span class="tstep-dot"></span><span data-en="Riding" data-kh="កំពុងដឹក">Riding</span></div>
+            <div class="tstep"><span class="tstep-dot"></span><span data-en="Arriving" data-kh="ជិតដល់">Arriving</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" data-animate>
+    <h2 class="cta-title" data-en="Hungry yet?" data-kh="ឃ្លានហើយមែនទេ?">Hungry yet?</h2>
+    <p class="cta-sub" data-en="Your first order is on us. 200 riel delivery for the first month." data-kh="ការបញ្ជាទិញដំបូងគឺមិនគិតថ្លៃ។ ការដឹកជញ្ជូន ២០០ រៀល ក្នុងខែដំបូង។">Your first order is on us. 200 riel delivery for the first month.</p>
+    <div class="hero-cta cta-actions">
+      <a href="#menu" class="btn btn-primary btn-lg btn-tactile" data-en="Start ordering" data-kh="ចាប់ផ្តើមបញ្ជាទិញ">
+        Start ordering <svg class="icon"><use href="#i-chevron" /></svg>
+      </a>
+      <a href="#top" class="btn btn-ghost btn-lg btn-tactile" data-en="Back to top" data-kh="ត្រឡប់ទៅខាងលើ">Back to top</a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logo">
+        <svg class="icon logo-mark"><use href="#i-flame" /></svg>
+        Khmer<span class="logo-accent">Eats</span>
+      </div>
+      <p class="footer-note" data-en="A demo landing page built with pure HTML, CSS &amp; JS." data-kh="ទំព័រសាកល្បង បង្កើតដោយ HTML, CSS &amp; JS សុទ្ធ។">A demo landing page built with pure HTML, CSS &amp; JS.</p>
+      <div class="footer-meta mono">© <span id="year">2026</span> Khmer Eats · <span data-en="Made in Phnom Penh" data-kh="បង្កើតនៅភ្នំពេញ">Made in Phnom Penh</span> 🇰🇭</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

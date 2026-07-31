@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="Khmer Eats — Street food, delivered hot">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF8F1"/>
+      <stop offset="100%" stop-color="#FBEDDE"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F97316"/>
+      <stop offset="100%" stop-color="#EA580C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- warm cream canvas -->
+  <rect width="1200" height="400" rx="24" fill="url(#bg)"/>
+
+  <!-- soft pastel blob accents -->
+  <circle cx="1080" cy="60" r="140" fill="#FFE7D1" opacity="0.6"/>
+  <circle cx="80" cy="360" r="110" fill="#FFE7D1" opacity="0.5"/>
+
+  <!-- mascot: flame in a rounded tile -->
+  <rect x="120" y="120" width="160" height="160" rx="44" fill="#FFFFFF"/>
+  <rect x="124" y="124" width="152" height="152" rx="40" fill="none" stroke="#F1DCC6" stroke-width="2"/>
+  <g transform="translate(160 160)">
+    <path d="M40 80a20 20 0 0 0 20-20c0-11-4-16-8-24-8.6-17-1.8-32 16-48 4 20 16 39 32 52 16 13 24 28 24 44a56 56 0 1 1-112 0c0-9 3-18 8-24a20 20 0 0 0 20 20z"
+          fill="url(#flameGrad)"/>
+    <circle cx="52" cy="84" r="10" fill="#FDBA74" opacity="0.8"/>
+  </g>
+
+  <!-- title -->
+  <text x="340" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="bold" fill="#1C1917" letter-spacing="-1">Khmer</text>
+  <text x="530" y="200" font-family="Georgia, 'Times New Roman', serif" font-size="76" font-weight="bold" fill="#EA580C" letter-spacing="-1">Eats</text>
+
+  <!-- tagline -->
+  <text x="344" y="248" font-family="Arial, Helvetica, sans-serif" font-size="24" fill="#57534E">Street food, delivered hot.</text>
+
+  <!-- pills: EN/KH + light/dark -->
+  <rect x="344" y="278" width="86" height="34" rx="17" fill="#FFFFFF"/>
+  <text x="370" y="300" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="bold" fill="#EA580C">EN / ខ្មែរ</text>
+
+  <rect x="444" y="278" width="34" height="34" rx="17" fill="#FFFFFF"/>
+  <circle cx="461" cy="295" r="7" fill="#EA580C"/>
+  <circle cx="461" cy="295" r="13" fill="none" stroke="#F1DCC6" stroke-width="2"/>
+
+  <rect x="492" y="278" width="34" height="34" rx="17" fill="#1C1917"/>
+  <path d="M504 282a9 9 0 1 0 0 14 11 11 0 0 1-8-6 9 9 0 0 0 8-8z" fill="#FBEDDE"/>
+
+  <!-- rating -->
+  <g fill="#F59E0B">
+    <path d="M740 286l5.5 11 12.5 1.8-9 8.8 2.1 12.3-11.1-5.8-11.1 5.8 2.1-12.3-9-8.8 12.5-1.8z"/>
+    <path d="M770 286l5.5 11 12.5 1.8-9 8.8 2.1 12.3-11.1-5.8-11.1 5.8 2.1-12.3-9-8.8 12.5-1.8z"/>
+    <path d="M800 286l5.5 11 12.5 1.8-9 8.8 2.1 12.3-11.1-5.8-11.1 5.8 2.1-12.3-9-8.8 12.5-1.8z"/>
+    <path d="M830 286l5.5 11 12.5 1.8-9 8.8 2.1 12.3-11.1-5.8-11.1 5.8 2.1-12.3-9-8.8 12.5-1.8z"/>
+  </g>
+  <path d="M855 286l5.5 11 12.5 1.8-9 8.8 2.1 12.3-11.1-5.8-11.1 5.8 2.1-12.3-9-8.8 12.5-1.8z" fill="#E7E5E4"/>
+  <text x="748" y="324" font-family="Arial, Helvetica, sans-serif" font-size="17" fill="#57534E">4.9 from 2,400+ hawkers</text>
+</svg>
